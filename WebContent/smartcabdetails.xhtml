@@ -1,0 +1,48 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body> 
+
+<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="40" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	    
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" >
+    
+         <h:form >
+	    	<p:dataTable id="cabt" var="cab" value="#{cabbean.cabs}">
+    <p:column headerText="Cab Name">
+        <h:outputText value="#{cab.name}" />
+    </p:column>
+ 
+    <p:column headerText="Website">
+        <h:outputText value="#{cab.website}" />
+    </p:column>
+ 
+    <p:column headerText="Phone">
+        <h:outputText value="#{cab.phone}" />
+    </p:column>
+    
+     <p:column headerText="Address">
+        <h:outputText value="#{cab.address}" />
+    </p:column>
+ 
+    <p:column headerText="Charge/KM">
+        <h:outputText value="#{cab.charge}" />
+    </p:column>
+</p:dataTable>
+<p:commandButton value="Back" action="smartloginsuccess"></p:commandButton>
+	</h:form>
+    </p:layoutUnit>
+ 
+</p:layout>   
+</h:body></html>

@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+
+<h:body>    
+	<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="50" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	   
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" >
+ 
+ <h:form>
+ 			<h:messages styleClass="error"/>
+	    	<h:panelGrid columns="2">
+ 	           <h:graphicImage value="/images/index.jpg"/>
+ 	           <h:panelGrid columns="2">
+ 	              <h4>Smart Signin</h4> <h:outputText></h:outputText>
+				  User:  <p:inputText id="user" value="#{login.user}" required="true" requiredMessage="User is required"></p:inputText>
+ 				  Passcode: <p:password id="password" value="#{login.passcode}" required="true" requiredMessage="Passcode is required"></p:password>
+ 		  	
+ 		  	  <p:commandButton value="Login"  action="#{login.doLogin}" icon="ui-icon-play">
+    	  	 </p:commandButton>
+    	  	 </h:panelGrid>
+	  </h:panelGrid>
+	  	
+    	</h:form>
+    	</p:layoutUnit>
+ 
+</p:layout> 
+</h:body></html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head></h:head>
+<h:body>    
+ <p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="50" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	   
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" >
+ <h:form>
+      <p:panel>
+      <h:panelGroup>
+      <h:panelGrid columns="1">
+      <h:outputText value="Smart Home " style="color:blue;"/>
+      </h:panelGrid>
+       </h:panelGroup>
+       <h:panelGrid columns="3">
+      <h:graphicImage value="/images/last2.jpg"/>
+      <p:panel>
+      <h:panelGrid columns="2">
+	 <h:outputText value="Existing user? " style="color:blue;"> </h:outputText> <h:link value="Login" outcome="smartlogin" style="color:blue;" />    	
+	 <h:outputText value="New user? " style="color:blue;"> </h:outputText> <h:link value="signup" outcome="smartsignup" style="color:blue;"/>  
+	</h:panelGrid>
+	</p:panel>	
+	 <h:graphicImage value="/images/sc.jpg"/>
+	</h:panelGrid>
+	</p:panel>
+  </h:form>
+  </p:layoutUnit>
+ 
+</p:layout> 
+</h:body></html>

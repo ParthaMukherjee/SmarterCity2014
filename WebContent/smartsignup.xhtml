@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>    
+<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="50" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	   
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" > 
+ <h:form>   <p:panel id="pnl">
+ 			 <h:messages styleClass="error"/>
+	    	<h:panelGrid columns="2">
+	    	       Name :  <p:inputText id="name" value="#{register.name}" required="true" requiredMessage="Name is required"></p:inputText>
+ 				   D.O.B :   <p:calendar value="#{register.dob}" showOn="both"  navigator="true" pages="1" required="true" requiredMessage="D.O.B is required"/>
+ 		  		   Email :	 <p:inputText id="email" value="#{register.email}" required="true" requiredMessage="email is required"></p:inputText>
+ 		  		   Pin :   <p:inputText id="pin" value="#{register.pin}" required="true" requiredMessage="Pin is required"></p:inputText>
+				   User:  <p:inputText id="user" value="#{register.user}" required="true" requiredMessage="User is required"></p:inputText>
+ 				   Passcode: <p:password id="password" value="#{register.passcode}" required="true" requiredMessage="Passcode is required"></p:password>
+ 		  	  <p:commandButton id="btn" value="submit" action="#{register.doRegistration}">
+    	  	 </p:commandButton>
+    	  	 
+	  </h:panelGrid>
+	  </p:panel>
+	</h:form>
+	</p:layoutUnit>
+ 
+</p:layout>   
+</h:body></html>

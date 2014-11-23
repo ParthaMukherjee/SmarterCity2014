@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head> <link href="./resources/css/styles.css" rel="stylesheet" type="text/css"/> </h:head>
+<h:body>    
+
+<h:form id="form">
+<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="80" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	    <h:panelGroup >
+      	     <h:panelGrid columns="1" style="align:left;">
+      	  	<p:commandLink value="signout" action="smartlogout" style="color:blue;"/>
+      	  	</h:panelGrid>
+        </h:panelGroup>
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" > 
+<p:tabView>
+	
+        <p:tab title="Admin Tasks">
+        <p:panel>
+            <p:dataTable var="task" value="#{dtLazyView.lazyModel}" paginator="true" rows="10"
+                 paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                 rowsPerPageTemplate="5,10,15"  selectionMode="single" selection="#{dtLazyView.selectedTask}" id="taskTable" lazy="true" rowStyleClass="#{task.priority eq 'High' ? 'error' : null}" editMode="column">
+            <p:ajax  event="rowSelect" listener="#{dtLazyView.onRowSelect}"  update=":form:taskDetail" oncomplete="PF('taskDialog').show()" ></p:ajax>
+             <p:column headerText="TaskId" sortBy="#{task.taskId}" filterBy="#{task.taskId}">
+            <h:outputText value="#{task.taskId}" />
+        </p:column>
+        <p:column headerText="Task Name" sortBy="#{task.taskName}" filterBy="#{task.taskName}">
+            <h:outputText value="#{task.taskName}" />
+        </p:column>
+        <p:column headerText="Priority" sortBy="#{task.priority}" filterBy="#{task.priority}">
+            <h:outputText value="#{task.priority}" />
+        </p:column>
+        <p:column headerText="Created" sortBy="#{task.created}" filterBy="#{task.created}">
+            <h:outputText value="#{task.created}">
+              <f:convertDateTime type="date" dateStyle="short"></f:convertDateTime>
+            </h:outputText>
+        </p:column>
+        <p:column headerText="Created By" sortBy="#{task.createdBy}" filterBy="#{task.createdBy}">
+            <h:outputText value="#{task.createdBy}" />
+        </p:column>
+         <p:column headerText="Assigned To" sortBy="#{task.assigned}" filterBy="#{task.assigned}">
+            <h:outputText value="#{task.assigned}" />
+        </p:column>
+        <p:column headerText="Progress" sortBy="#{task.status}" filterBy="#{task.status}">
+            <h:outputText value="#{task.status}" />
+        </p:column>
+        <p:column headerText="Target Date" sortBy="#{task.completionDate}" filterBy="#{task.completionDate}">
+            <h:outputText value="#{task.completionDate}" >
+              <f:convertDateTime type="date" dateStyle="short"></f:convertDateTime>
+            </h:outputText>
+        </p:column>
+    </p:dataTable>
+    </p:panel>
+        </p:tab>
+        <p:tab title="Registrations..">
+        <p:panel>
+          <h:panelGrid columns="3"  border="5" title="Smart Options" cellpadding="30" cellspacing="10"> 
+ 		  	 <p:commandButton value="Cab Registration" />   <p:commandButton value="Car Park Registration"/>  <p:commandButton value="Follow up Report"/>
+ 		  	 <p:commandButton value="Essential Registration" action="essentialregistration"/>  <p:commandButton value="Complaint Registration" />  <p:commandButton value="User Registration" />
+ 		  	   <p:commandButton value="Hospital Registration"/>  <p:commandButton value="Self Service"/>   <p:commandButton value="Suggestion Box"/>
+	  </h:panelGrid>
+          </p:panel>
+        </p:tab>
+       
+    </p:tabView>
+    
+    </p:layoutUnit>
+ 
+</p:layout> 
+   
+    <p:dialog header="Task Details" widgetVar="taskDialog" modal="true" hideEffect="fade" resizable="false">
+        <p:outputPanel id="taskDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty dtLazyView.selectedTask}" columnClasses="label,value">
+                
+                <h:outputText value="Id:" />
+                <h:outputText value="#{dtLazyView.selectedTask.taskId}" />
+ 
+                <h:outputText value="Description:" />
+                <h:outputText value="#{dtLazyView.selectedTask.taskDescription}"/>
+                
+                <h:outputText value="Priority :" />
+                <p:selectOneMenu value="#{dtLazyView.selectedTask.priority}">
+ 		  <f:selectItem itemLabel="High" itemValue="High"></f:selectItem>
+ 		  <f:selectItem itemLabel="Medium" itemValue="Medium"></f:selectItem>
+ 		  <f:selectItem itemLabel="Low" itemValue="Low"></f:selectItem>
+ 		  </p:selectOneMenu>
+ 		  
+ 		   Assign To: <p:selectOneMenu value="#{dtLazyView.selectedTask.assigned}">
+ 		  <f:selectItem itemLabel="PWD" itemValue="PWD"></f:selectItem>
+ 		  <f:selectItem itemLabel="FBD" itemValue="FBD"></f:selectItem>
+ 		   <f:selectItem itemLabel="Corporation" itemValue="Corporation"></f:selectItem>
+ 		     <f:selectItem itemLabel="Others" itemValue="Others"></f:selectItem>
+ 		  </p:selectOneMenu>
+                
+                 <h:outputText value="Status :" />
+                <p:selectOneMenu value="#{dtLazyView.selectedTask.status}">
+ 				   <f:selectItem itemLabel="" itemValue=""></f:selectItem>
+ 				     <f:selectItem itemLabel="Submited" itemValue="Submited"></f:selectItem>
+ 		  <f:selectItem itemLabel="Open" itemValue="Open"></f:selectItem>
+ 		  <f:selectItem itemLabel="In Progress" itemValue="In Progress"></f:selectItem>
+ 		   <f:selectItem itemLabel="Closed" itemValue="Closed"></f:selectItem>
+ 		    <f:selectItem itemLabel="Rejected" itemValue="Rejected"></f:selectItem>
+ 		  </p:selectOneMenu>
+                 <h:outputText value="Comments" />
+                <h:inputText value="#{dtLazyView.selectedTask.comment}"/>
+               <p:commandButton value="save" actionListener="#{dtLazyView.save}">
+               		<f:ajax event="click" onevent="taskDialog.hide()" />
+               </p:commandButton>
+               <p:commandButton value="cancel">
+               <f:ajax event="click" onevent="taskDialog.hide()" ></f:ajax>
+               </p:commandButton>
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+</h:form>
+
+</h:body></html>

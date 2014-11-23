@@ -1,0 +1,9 @@
+body { 
+  background-color: white;
+  background-image: url("../images/sc.jpg")
+}
+
+.error {
+	font-weight: bold;
+	color: red;
+}

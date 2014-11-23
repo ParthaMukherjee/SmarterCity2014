@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>    
+<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="50" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	   
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" > 
+ <h:form>   <p:panel id="pnl">
+ 			 <h:messages styleClass="error" for="pin"/>
+ 			 <h:panelGroup><h:outputText value="My Search Criteria :" style="color:blue"></h:outputText>
+ 			 </h:panelGroup>
+	    	<h:panelGrid columns="2">
+	    	       Searching For :  <p:selectOneMenu value="#{mysearch.search}">
+ 				   <f:selectItem itemLabel="" itemValue=""></f:selectItem>
+ 		  <f:selectItem itemLabel="Doctor" itemValue="Doctor"></f:selectItem>
+ 		  <f:selectItem itemLabel="Plumber" itemValue="Plumber"></f:selectItem>
+ 		   <f:selectItem itemLabel="Electrician" itemValue="Electrician"></f:selectItem>
+ 		   <f:selectItem itemLabel="Lawyer" itemValue="Lawyer"></f:selectItem>
+ 		    <f:selectItem itemLabel="Driver" itemValue="Driver"></f:selectItem>
+ 		     <f:selectItem itemLabel="Painter" itemValue="Painter"></f:selectItem>
+ 		     <f:selectItem itemLabel="Carpainter" itemValue="Carpainter"></f:selectItem>
+ 		     <f:selectItem itemLabel="Gas Oven Repair" itemValue="Gas Oven Repair"></f:selectItem>
+ 		    <f:selectItem itemLabel="Motor Mechanic" itemValue="Motor"></f:selectItem>
+ 		  </p:selectOneMenu>
+ 		  		   Pin :   <p:inputText id="pin" value="#{mysearch.pin}"></p:inputText>
+ 		  	  <p:commandButton id="btn" value="search" action="#{mysearch.doSearch}">
+ 		  	  	 <p:ajax event="click" update="mytable" />
+    	  	 </p:commandButton>
+    	  	 <p:commandButton value="Back" action="smartloginsuccess"></p:commandButton>
+    	  	 
+	  </h:panelGrid>
+	  </p:panel>
+	  <p:panel>
+	  <h:panelGroup><h:outputText value="My Search Results :" style="color:blue"></h:outputText></h:panelGroup>
+	  <h:panelGroup id="myp">
+	  <p:dataTable id="mytable" value="#{mysearch.list}" var="ess" >
+	  <f:facet name="Search Results"></f:facet>
+	    <p:column headerText="Name ">
+            <h:outputText value="#{ess.name}" />
+        </p:column>
+         <p:column headerText="Email ">
+            <h:outputText value="#{ess.email}" />
+        </p:column>
+        <p:column headerText="Phone ">
+            <h:outputText value="#{ess.phone}" />
+        </p:column>
+        <p:column headerText="Pin ">
+            <h:outputText value="#{ess.pin}" />
+        </p:column>
+         <p:column headerText="Type ">
+            <h:outputText value="#{ess.type}" />
+        </p:column>
+	  </p:dataTable>
+	  
+	  </h:panelGroup>
+	  </p:panel>
+	</h:form>
+	</p:layoutUnit>
+ 
+</p:layout>   
+</h:body></html>

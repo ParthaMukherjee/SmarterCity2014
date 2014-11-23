@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>    
+<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="50" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	   
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" > 
+ <h:form>   <p:panel id="pnl">
+ 			 <h:panelGroup><h:outputText value="My Search Criteria :" style="color:blue"></h:outputText>
+ 			 </h:panelGroup>
+	    	<h:panelGrid columns="2">
+	    	       Street No :  <p:inputText value="#{hospital.search}"/>
+ 		  		   Circle Area :  <p:selectOneMenu value="#{hospital.dist}">
+				   <f:selectItem itemLabel="" itemValue=""></f:selectItem>
+ 		  <f:selectItem itemLabel="1 KM" itemValue="1"></f:selectItem>
+ 		  <f:selectItem itemLabel="2 KM" itemValue="2"></f:selectItem>
+ 		   <f:selectItem itemLabel="3 KM" itemValue="3"></f:selectItem>
+ 		     <f:selectItem itemLabel="4 KM" itemValue="4"></f:selectItem>
+ 		   <f:selectItem itemLabel="5 KM" itemValue="5"></f:selectItem>
+ 		   </p:selectOneMenu>
+ 		  		   
+ 		  	  <p:commandButton id="btn" value="search" action="#{hospital.doSearch}">
+ 		  	  	 <p:ajax event="click" update="myptable,cc" />
+    	  	 </p:commandButton>
+    	  	 <p:commandButton value="Back" action="smartloginsuccess"></p:commandButton>
+    	  	 
+	  </h:panelGrid>
+	  </p:panel>
+	  <p:panel>
+	  <h:panelGroup><h:outputText value="My Search Results :" style="color:blue"/>
+	  <h:outputText value="Live Count :" style="color:blue"/>
+	   <h:outputText id="cc" value="#{hospital.livecount}" style="color:blue">
+	  </h:outputText></h:panelGroup>
+	  <h:panelGroup id="myp">
+	  <p:dataTable id="myptable" value="#{hospital.listh}" var="hos" draggableRows="true" >
+	  <f:facet name="Search Results"></f:facet>
+	    <p:column headerText="Hospital Name ">
+            <h:outputText value="#{hos.name}" />
+        </p:column>
+         <p:column headerText="Hospital Address">
+            <h:outputText value="#{hos.address}" />
+        </p:column>
+        
+         <p:column headerText="Rating">
+            <h:outputText value="#{hos.rating}" />
+        </p:column>
+       
+          <p:column headerText="Open Now">
+            <h:outputText value="#{hos.open}" />
+        </p:column>
+        
+	  </p:dataTable>
+	  
+	  </h:panelGroup>
+	  </p:panel>
+	</h:form>
+	</p:layoutUnit>
+ 
+</p:layout>   
+</h:body></html>

@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body> 
+
+<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="80" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	     <h:panelGroup >
+      	     <h:panelGrid columns="2" >
+      	  	<h:outputText value="#{login.welcome}" style="color:blue;"/>
+      	  	</h:panelGrid>
+        </h:panelGroup>
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" >
+    
+        <h:form>
+ 		<h:panelGroup>
+ 		<h:outputText value="Complain Registration " style="color:blue;font-weight: bold"></h:outputText>
+ 		<h:panelGrid columns="2">
+ 		  Complain Title:  <p:inputText id="ctitle" value="#{complain.name}"></p:inputText>
+ 		  Complain Description:  <p:inputTextarea id="cdescription" rows="3" value="#{complain.description}"></p:inputTextarea>
+ 		  Assign To: <p:selectOneMenu value="#{complain.assign}">
+ 		  <f:selectItem itemLabel="PWD" itemValue="PWD"></f:selectItem>
+ 		  <f:selectItem itemLabel="FBD" itemValue="FBD"></f:selectItem>
+ 		  </p:selectOneMenu>
+ 		  
+ 		  Priority :<p:selectOneMenu value="#{complain.priority}">
+ 		  <f:selectItem itemLabel="High" itemValue="High"></f:selectItem>
+ 		  <f:selectItem itemLabel="Medium" itemValue="Medium"></f:selectItem>
+ 		  <f:selectItem itemLabel="Low" itemValue="Low"></f:selectItem>
+ 		  </p:selectOneMenu>
+ 		  <p:commandButton value="submit" action="#{complain.doComplain}"></p:commandButton>
+ 		  </h:panelGrid>
+ 		</h:panelGroup> 
+	  	  
+    	</h:form>
+    </p:layoutUnit>
+ 
+</p:layout>   
+</h:body></html>

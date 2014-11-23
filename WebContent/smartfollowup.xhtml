@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body> 
+
+<p:layout fullPage="true">
+ 
+    <p:layoutUnit position="north" size="40" header="OUR CITY OUR SENTIMENT TRUST N DREAM" style="text-align:center;color:blue;" >
+      	    
+       </p:layoutUnit>
+ 
+    <p:layoutUnit position="south" size="50" header="Smart City Powered By IBM" style="text-align:center;">
+       
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center" >
+    
+         <h:form >
+	    	<p:dataTable id="t" var="task" value="#{mytaskbean.tasks}">
+     <p:column headerText="TaskId" >
+            <h:outputText value="#{task.taskId}" />
+        </p:column>
+        <p:column headerText="Task Name" >
+            <h:outputText value="#{task.taskName}" />
+        </p:column>
+        <p:column headerText="Priority" >
+            <h:outputText value="#{task.priority}" />
+        </p:column>
+        <p:column headerText="Created" >
+            <h:outputText value="#{task.created}">
+              <f:convertDateTime type="date" dateStyle="short"></f:convertDateTime>
+            </h:outputText>
+        </p:column>
+        <p:column headerText="Created By" >
+            <h:outputText value="#{task.createdBy}" />
+        </p:column>
+         <p:column headerText="Assigned To" >
+            <h:outputText value="#{task.assigned}" />
+        </p:column>
+        <p:column headerText="Progress" >
+            <h:outputText value="#{task.status}" />
+        </p:column>
+        <p:column headerText="Comments" >
+            <h:outputText value="#{task.comment}" />
+        </p:column>
+        <p:column headerText="Target Date" >
+            <h:outputText value="#{task.completionDate}" >
+              <f:convertDateTime type="date" dateStyle="short"></f:convertDateTime>
+            </h:outputText>
+        </p:column>
+</p:dataTable>
+<p:commandButton value="Back" action="smartloginsuccess"></p:commandButton>
+	</h:form>
+    </p:layoutUnit>
+ 
+</p:layout>   
+</h:body></html>
